@@ -6,11 +6,9 @@ public class OverworldController : MonoBehaviour
 {
     private new Rigidbody2D rigidbody;
     private Animator anim;
+    public bool canMove = true;
 
-    private const float WALKING_SPEED = 2f;
-
-    private bool canMove = true;
-    private bool walking = false;
+    private const float WALKING_SPEED = 300f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +32,16 @@ public class OverworldController : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        Vector2 speed = WALKING_SPEED * Time.deltaTime * (new Vector2(horizontal, vertical).normalized);
-        rigidbody.position += speed;
+        // z should equal y because it determines which sprites are rendered on top of which
+        // if a is lower than b on the screen, a is in front of b
+        Vector3 speed = WALKING_SPEED * Time.deltaTime * (new Vector3(horizontal, vertical, 0).normalized);
+        Vector3 lp = rigidbody.transform.localPosition;
+        Vector3 np = lp + speed;
+        np = new Vector3(np.x, np.y, np.y);
+        rigidbody.transform.localPosition = np;
 
         if (horizontal != 0)
         {
-
             transform.localScale = new Vector3(-1 * horizontal * Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
         }
 

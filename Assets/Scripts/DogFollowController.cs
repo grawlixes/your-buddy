@@ -3,7 +3,7 @@ using UnityEngine;
 public class DogFollowController : MonoBehaviour
 {
     public GameObject dog;
-    public BoxCollider2D collider;
+    public new BoxCollider2D collider;
 
     void OnTriggerEnter2D(Collider2D other)
     {
