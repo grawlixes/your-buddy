@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
-    // The collider that calls this.
-    public new DialogueColliderController collider;
-
     // The name of the family of text files to read from.
     public string dialogueFamily;
     // Whether the text is dependent on the day.
@@ -15,13 +12,16 @@ public class DialogueController : MonoBehaviour
     public int day;
     // The number of different prompts you can get.
     public int numUniquePrompts;
+    // Misc. monobehaviour that might be useful to execute after you're done reading.
+    // Really only useful as an inspector item, not so much as a prefab.
+    public MonoBehaviour triggerOnCompletion;
 
     private int promptIndex = 0;
 
     // This lets us programmatically change the family of text to read from.
     // An example where this is useful is if we have a set of lines to read for one interactable object,
     // but after the player finishes a puzzle, we want to read a different set of lines on the same interactable.
-    public void resetFamily(string dialogueFamily, bool dayDependent, int day, int numUniquePrompts)
+    public void SetFamily(string dialogueFamily, bool dayDependent, int day, int numUniquePrompts)
     {
         this.dialogueFamily = dialogueFamily;
         this.day = day;
@@ -46,7 +46,6 @@ public class DialogueController : MonoBehaviour
     public void TriggerNextDialogue()
     {
         string file = GetFileName();
-        Debug.Log(file);
 
         TextBoxController tbc = gameObject.AddComponent<TextBoxController>();
         tbc.enabled = false;

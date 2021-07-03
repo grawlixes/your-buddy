@@ -7,6 +7,7 @@ public class OverworldController : MonoBehaviour
     private new Rigidbody2D rigidbody;
     private Animator anim;
     public bool canMove = true;
+    public bool canTakeDialogue = true;
 
     private const float WALKING_SPEED = 300f;
 
@@ -17,13 +18,19 @@ public class OverworldController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (canMove)
         {
             TryToMove();
         }
+    }
+
+    public IEnumerator WaitThenEnableDialogue(TextBoxController tbcToDestroy)
+    {
+        yield return new WaitForSeconds(1);
+        canTakeDialogue = true;
+        Destroy(tbcToDestroy);
     }
 
     private void TryToMove()

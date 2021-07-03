@@ -18,12 +18,12 @@ public class TextBoxController : MonoBehaviour
 
     private string[] dialogue;
     private int i = 0;
-    
+
     void OnEnable()
     {
         if (textFile == null)
             return;
-        
+
         player = GameObject.Find("Canvas/Player").GetComponent<OverworldController>();
         player.canMove = false;
 
@@ -38,9 +38,8 @@ public class TextBoxController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetButtonDown("Use"))
         {
-            Debug.Log("Called");
             GameObject.Destroy(currentTextBox);
             i++;
 
@@ -50,14 +49,13 @@ public class TextBoxController : MonoBehaviour
             } else
             {
                 player.canMove = true;
-                Destroy(this.GetComponent<TextBoxController>());
+                StartCoroutine(player.WaitThenEnableDialogue(this.GetComponent<TextBoxController>()));
             }
         }
     }
 
     private void TextBoxFactory(string textString)
     {
-        Debug.Log(textString);
         GameObject textBox = Resources.Load(PATH_TO_BOX_PREFAB) as GameObject;
         currentTextBox = GameObject.Instantiate(textBox);
 
