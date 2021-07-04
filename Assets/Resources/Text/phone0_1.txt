@@ -1,2 +1,2 @@
-You found the missing number, "1".
+You found the missing number from the puzzle, "1".
 Calling mom...

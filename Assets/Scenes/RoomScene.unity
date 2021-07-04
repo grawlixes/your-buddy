@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &233962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233963}
+  - component: {fileID: 233964}
+  m_Layer: 0
+  m_Name: Help
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &233963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1368525154}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &233964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfb56f2d490e664c8de274bcc16b159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueFamily: help
+  dayDependent: 0
+  day: 0
+  numUniquePrompts: 1
+  puzzlePrefabToEnableAfterDialogue: 
 --- !u!1 &101076085
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,11 +214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfb56f2d490e664c8de274bcc16b159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 1849563643}
   dialogueFamily: mirror
   dayDependent: 1
   day: 0
   numUniquePrompts: 1
+  puzzlePrefabToEnableAfterDialogue: 
 --- !u!1 &300065261
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 685473341}
   player: {fileID: 1855865678}
+  shouldDeleteOnActivation: 0
 --- !u!61 &300065264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -413,11 +462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfb56f2d490e664c8de274bcc16b159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 1714763118}
   dialogueFamily: bed
   dayDependent: 1
   day: 0
   numUniquePrompts: 2
+  puzzlePrefabToEnableAfterDialogue: 
 --- !u!1 &585852823
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,11 +613,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfb56f2d490e664c8de274bcc16b159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 300065263}
   dialogueFamily: dresser
-  dayDependent: 0
+  dayDependent: 1
   day: 0
   numUniquePrompts: 1
+  puzzlePrefabToEnableAfterDialogue: 
 --- !u!1 &783986603
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +877,7 @@ Transform:
   - {fileID: 685473340}
   - {fileID: 570181984}
   - {fileID: 101076086}
+  - {fileID: 233963}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1216,6 +1266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 570181985}
   player: {fileID: 1855865678}
+  shouldDeleteOnActivation: 0
 --- !u!61 &1714763119
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1288,6 +1339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 101076087}
   player: {fileID: 1855865678}
+  shouldDeleteOnActivation: 0
 --- !u!61 &1849563644
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1328,6 +1380,7 @@ GameObject:
   - component: {fileID: 1855865680}
   - component: {fileID: 1855865679}
   - component: {fileID: 1855865677}
+  - component: {fileID: 1855865681}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1470,6 +1523,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1855865681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855865674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d57c386c838264a8ba6f539583e551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  helpDialogue: {fileID: 233964}
+  player: {fileID: 1855865678}
 --- !u!1 &1871544266
 GameObject:
   m_ObjectHideFlags: 0

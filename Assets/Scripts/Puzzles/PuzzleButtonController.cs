@@ -6,7 +6,7 @@ public class PuzzleButtonController : MonoBehaviour
 {
     public PuzzleController puzzle;
     public bool active;
-    public bool highlighted;
+    private bool highlighted = false;
 
     private int i;
     private int j;
@@ -41,40 +41,30 @@ public class PuzzleButtonController : MonoBehaviour
     public void ToggleActivated()
     {
         active = !active;
-        int newGreen = 255;
-        if (!active)
-            newGreen = 0;
 
-        // go back to grey if it's not highlighted or activated
-        float newRed = sprite.color.r;
-        float newBlue = 0;
-        if (!active && !highlighted)
-        {
-            newRed = 255;
-            newGreen = 255;
-            newBlue = 255;
-        }
-
-        sprite.color = new Color(newRed, newGreen, newBlue);
+        sprite.color = NewColor();
     }
 
     public void ToggleHighlight()
     {
         highlighted = !highlighted;
-        int newRed = 255;
-        if (!highlighted)
-            newRed = 0;
 
-        // go back to grey if it's not highlighted or activated
-        float newGreen = sprite.color.g;
-        float newBlue = 0;
-        if (!highlighted && !active)
+        sprite.color = NewColor();
+    }
+
+    private Color NewColor()
+    {
+        if (!highlighted && !active) {
+            return new Color(255, 255, 255);
+        } else if (highlighted && !active)
         {
-            newRed = 255;
-            newGreen = 255;
-            newBlue = 255;
+            return new Color(255, 255, 0);
+        } else if (active && !highlighted)
+        {
+            return new Color(0, 255, 0);
+        } else
+        {
+            return new Color(255, 0, 0);
         }
-
-        sprite.color = new Color(newRed, newGreen, newBlue);
     }
 }

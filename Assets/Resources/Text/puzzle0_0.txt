@@ -1,2 +1,5 @@
-Your buddy found a cool-looking puzzle.
-Try solving it!
+The faucet is leaking.
+... What's this?
+You found a weird-looking cube in the sink.
+It seems to be a puzzle.
+[Click on the buttons to make them all green.]

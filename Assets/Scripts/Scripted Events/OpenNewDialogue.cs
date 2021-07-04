@@ -7,7 +7,7 @@ public class OpenNewDialogue
 { 
     public static void OpenNew(string pathToDialogue)
     {
-        DialogueController dialogue = GameObject.Find(pathToDialogue).GetComponent<DialogueController>();
+        DialogueController dialogue = GameObject.Find("Dialogues/" + pathToDialogue).GetComponent<DialogueController>();
         dialogue.numUniquePrompts += 1;
     }
 }

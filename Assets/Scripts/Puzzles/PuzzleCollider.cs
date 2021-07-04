@@ -9,7 +9,6 @@ public class PuzzleCollider : MonoBehaviour
     public string puzzlePrefabName;
     
     private bool inside = false;
-    private bool finishedDialogue = false;
     private GameObject puzzle;
 
     void Start()
@@ -31,15 +30,10 @@ public class PuzzleCollider : MonoBehaviour
 
     void Update()
     {
-        if (inside && !finishedDialogue && player.canTakeDialogue && Input.GetButtonDown("Use"))
+        if (inside && player.canTakeDialogue && Input.GetButtonDown("Use"))
         {
             player.canTakeDialogue = false;
             dialogue.TriggerNextDialogue();
-            finishedDialogue = true;
-        } else if (finishedDialogue && inside && player.canTakeDialogue && Input.GetButtonDown("Use"))
-        {
-            GameObject.Instantiate(puzzle);
-            Destroy(this.gameObject);
         }
     }
 }

@@ -26,7 +26,6 @@ public class PuzzleController : MonoBehaviour
         {
             for (int j = 0; j < m; j++)
             {
-                Debug.Log(path + "Button" + i.ToString() + "_" + j.ToString());
                 grid[i,j] = GameObject.Find(path + "Button" + i.ToString() + "_" + j.ToString())
                                       .GetComponent<PuzzleButtonController>();
             }
@@ -100,12 +99,12 @@ public class PuzzleController : MonoBehaviour
         {
             GameObject canvas = GameObject.Find("Canvas");
 
-            victoryDialogue = canvas.AddComponent<DialogueController>();
-            victoryDialogue.SetFamily("victory", true, day, 1);
             // todo
-            // this is unbelievably scrappy because we won't always do this after a puzzle
-            // find a way to generalize it with MonoBehaviour, and get started on the sidescroller part
-            OpenNewDialogue.OpenNew("Dialogues/Phone");
+            // this is actually disgusting. please find a way to generalize it
+            OpenNewDialogue.OpenNew("Phone");
+
+            victoryDialogue = canvas.AddComponent<DialogueController>();
+            victoryDialogue.SetFamily("victory", true, day, 1, null);
             victoryDialogue.TriggerNextDialogue();
 
             Destroy(gameObject);

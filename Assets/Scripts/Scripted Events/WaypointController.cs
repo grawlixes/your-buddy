@@ -10,7 +10,7 @@ public class WaypointController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Player")
+        if (other.name == "Dog")
         {
             dog.SetWaypoint(waypoint);
             Destroy(this.GetComponent<WaypointController>());

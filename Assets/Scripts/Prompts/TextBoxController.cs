@@ -10,6 +10,8 @@ public class TextBoxController : MonoBehaviour
     public string textFile;
     // This is to stop the player from moving while the text is up.
     public OverworldController player;
+    // Instantiate this after the dialogue is over.
+    public string puzzlePrefabToEnableAfterDialogue;
 
     private const string PATH_TO_BOX_PREFAB = "Prefabs/TextBox";
     private const string PATH_TO_TEXT_PREFAB = "Prefabs/Text";
@@ -48,6 +50,13 @@ public class TextBoxController : MonoBehaviour
                 TextBoxFactory(dialogue[i]);
             } else
             {
+                if (puzzlePrefabToEnableAfterDialogue != null && 
+                    puzzlePrefabToEnableAfterDialogue.Length != 0)
+                {
+                    GameObject puzzle = Resources.Load(puzzlePrefabToEnableAfterDialogue) as GameObject;
+                    GameObject.Instantiate(puzzle)
+                              .GetComponent<PuzzleController>();
+                }
                 player.canMove = true;
                 StartCoroutine(player.WaitThenEnableDialogue(this.GetComponent<TextBoxController>()));
             }
