@@ -52,19 +52,23 @@ public class PuzzleButtonController : MonoBehaviour
         sprite.color = NewColor();
     }
 
-    private Color NewColor()
+    private Color32 NewColor()
     {
+        // if it's not highlighted or active, it should be grey
         if (!highlighted && !active) {
-            return new Color(255, 255, 255);
+            return new Color32(255, 255, 255, 255);
+        // highlighted blocks should be yellow
         } else if (highlighted && !active)
         {
-            return new Color(255, 255, 0);
+            return new Color32(255, 255, 0, 255);
+        // active blocks are dark green
         } else if (active && !highlighted)
         {
-            return new Color(0, 255, 0);
+            return new Color32(0, 150, 0, 255);
+        // active *and* highlighted blocks are light green
         } else
         {
-            return new Color(255, 0, 0);
+            return new Color32(0, 255, 0, 255);
         }
     }
 }

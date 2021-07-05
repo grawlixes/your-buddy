@@ -12,6 +12,8 @@ public class PuzzleController : MonoBehaviour
     public string shape;
     // victory dialogue day
     public int day;
+    // victory dialogue option(s) to open up more of
+    public string[] options;
 
     // plays after you win the puzzle
     private DialogueController victoryDialogue;
@@ -32,6 +34,7 @@ public class PuzzleController : MonoBehaviour
         }
     }
 
+    // We use this to figure out which cells to highlight and/or activate depending on the shape of the cursor.
     private int[,] GetNeighbors(int i, int j)
     {
         if (shape == "hLine")
@@ -39,18 +42,20 @@ public class PuzzleController : MonoBehaviour
             return new int[,] { { i, j }, { i, j + 1 } };
         } else if (shape == "vLine") {
             return new int[,] { { i - 1, j }, { i, j }, { i + 1, j } };
-        } else
+        } else // shape is "plus"
         {
             return new int[,] { { i - 1, j }, { i, j - 1 }, { i, j }, { i, j + 1 }, { i + 1, j } };
         }
     }
 
+    // The coordinates generated might be off the grid. If so, this function catches it.
     private bool Validate(int i, int j)
     {
         return (Mathf.Min(i, j) >= 0) &&
                (i < n) && (j < m);
     }
 
+    // If all cells are active, the player solved this puzzle.
     private bool DidWin()
     {
         for (int i = 0; i < n; i++)
@@ -99,9 +104,10 @@ public class PuzzleController : MonoBehaviour
         {
             GameObject canvas = GameObject.Find("Canvas");
 
-            // todo
-            // this is actually disgusting. please find a way to generalize it
-            OpenNewDialogue.OpenNew("Phone");
+            foreach (string dialogue in options)
+            {
+                OpenNewDialogue.OpenNew(dialogue);
+            }
 
             victoryDialogue = canvas.AddComponent<DialogueController>();
             victoryDialogue.SetFamily("victory", true, day, 1, null);
