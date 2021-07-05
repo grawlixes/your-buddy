@@ -8,11 +8,12 @@ Hangout 2021 Game Jam.
 The game features an "overworld"-type area with exploration and puzzles, as well as an action sequence.
 It only supports 1366x768 resolution right now.
 
-To-do list:
+To-do list, in order of some mixture of importance and difficulty:
 - Finish action scene
 - Make separate day scenes in overworld
 - Create and finish finale scene
 - Create and finish name entry scene
+- Create and finish "intermittent" dialogue scenes
 
 Nice-to-haves:
 - Figure out what, if anything, I want to do with the dog's "waypoint" assistance behavior

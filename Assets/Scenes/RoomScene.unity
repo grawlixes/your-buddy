@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d7eb16fa9458a41a39556db273764d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numFramesPerFade: 3
+  numFramesPerFade: 1
   fadeInAtSceneStart: 1
   sceneToLoadAfterFadeOut: 1
   fadeIndex: 0

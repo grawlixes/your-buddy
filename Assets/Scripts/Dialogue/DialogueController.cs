@@ -58,8 +58,10 @@ public class DialogueController : MonoBehaviour
         TextBoxController tbc = gameObject.AddComponent<TextBoxController>();
         tbc.enabled = false;
         tbc.textFile = file;
-        // this is hacky and only works because of my specific use case, but whatever
-        if (fadeAfterThisPrompt == numUniquePrompts - 1)
+        // this is a little confusing, but it works and is generic enough.
+        bool isFinalDialogueBeforeFade = (fadeAfterThisPrompt == promptIndex && // is this the index we want to fade after?
+                                          promptIndex != numUniquePrompts); // are we *on* the dialogue, or are we "past" it (read below)?
+        if (isFinalDialogueBeforeFade)
             tbc.sfc = sfc;
         tbc.puzzlePrefabToEnableAfterDialogue = puzzlePrefabToEnableAfterDialogue;
         tbc.enabled = true;
