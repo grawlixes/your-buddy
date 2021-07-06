@@ -15,6 +15,7 @@ public class ActionWorldController : MonoBehaviour
     private SpriteRenderer sprite;
     private int flickerFramesLeft;
     private int framesToNextFlicker;
+    private AudioSource takeDamageSound;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,9 @@ public class ActionWorldController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         flickering = false;
         sprite = GetComponent<SpriteRenderer>();
+        takeDamageSound = GetComponent<AudioSource>();
 
-        //playerAnim.SetBool("moving", true);
+        playerAnim.SetBool("moving", true);
     }
 
     private void Die()
@@ -36,6 +38,7 @@ public class ActionWorldController : MonoBehaviour
         if (flickering)
             return;
 
+        takeDamageSound.Play();
         health -= 1;
 
         if (health > 0)
@@ -116,7 +119,6 @@ public class ActionWorldController : MonoBehaviour
 
             if (flickerFramesLeft == 0)
             {
-                Debug.Log("Removed flickering");
                 flickering = false;
             }
         }
