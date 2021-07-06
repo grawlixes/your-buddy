@@ -82,7 +82,10 @@ public class SpriteFadeController : MonoBehaviour
                 framesToNextFade = numFramesPerFade;
 
                 if (color.a == 255)
-                    SceneManager.LoadScene(sceneToLoadAfterFadeOut);
+                    if (sceneToLoadAfterFadeOut != -1)
+                        SceneManager.LoadScene(sceneToLoadAfterFadeOut);
+                    else
+                        Destroy(this.gameObject);
             }
         }
     }

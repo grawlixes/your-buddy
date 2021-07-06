@@ -4,15 +4,48 @@ using UnityEngine;
 
 public class ActionWorldController : MonoBehaviour
 {
+    public Animator effectAnim;
+    public int health = 3;
+    public int framesToFlicker = 180;
+    public int framesPerFlicker = 5;
+
     private bool canGiveInput;
-    private Animator anim;
+    private Animator playerAnim;
+    private bool flickering;
+    private SpriteRenderer sprite;
+    private int flickerFramesLeft;
+    private int framesToNextFlicker;
 
     // Start is called before the first frame update
     void Start()
     {
         canGiveInput = true;
-        anim = GetComponent<Animator>();
-        anim.SetBool("moving", true);
+        playerAnim = GetComponent<Animator>();
+        flickering = false;
+        sprite = GetComponent<SpriteRenderer>();
+
+        //playerAnim.SetBool("moving", true);
+    }
+
+    private void Die()
+    {
+
+    }
+    public void TakeDamage()
+    {
+        if (flickering)
+            return;
+
+        health -= 1;
+
+        if (health > 0)
+        {
+            flickerFramesLeft = framesToFlicker;
+            framesToNextFlicker = 1;
+            flickering = true;
+        }
+        else
+            Die();
     }
 
     /* Player can do three moves
@@ -40,6 +73,20 @@ public class ActionWorldController : MonoBehaviour
         }
     }
 
+    private void Flicker()
+    {
+        framesToNextFlicker -= 1;
+
+        if (framesToNextFlicker == 0)
+        {
+            flickerFramesLeft -= 1;
+            Color32 color = sprite.color;
+            color.a = (byte)(255 - color.a);
+            sprite.color = color;
+            framesToNextFlicker = framesPerFlicker;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -58,7 +105,19 @@ public class ActionWorldController : MonoBehaviour
             else if (input == "Blast")
             {
                 // blast
+                effectAnim.SetTrigger("blast");
                 Debug.Log("Blast");
+            }
+        }
+
+        if (flickering)
+        {
+            Flicker();
+
+            if (flickerFramesLeft == 0)
+            {
+                Debug.Log("Removed flickering");
+                flickering = false;
             }
         }
     }
