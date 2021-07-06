@@ -6,16 +6,24 @@ public class ActionWorldController : MonoBehaviour
 {
     public Animator effectAnim;
     public int health = 3;
-    public int framesToFlicker = 180;
-    public int framesPerFlicker = 5;
+    public float flickerInvincibleSeconds = 2f;
+    public float secondsPerFlick = .1f;
+    // speed at which the player returns to the spot they dashed from
+    public float returnSpeed = 3f;
 
     private bool canGiveInput;
     private Animator playerAnim;
     private bool flickering;
     private SpriteRenderer sprite;
-    private int flickerFramesLeft;
-    private int framesToNextFlicker;
+    private float invincibleSecondsLeft;
+    private float nextFlickSeconds;
     private AudioSource takeDamageSound;
+    private Rigidbody2D rb2d;
+    private new Transform transform;
+    private float originalX;
+    private bool returning;
+    private bool swiping;
+    private Transform effectTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +33,12 @@ public class ActionWorldController : MonoBehaviour
         flickering = false;
         sprite = GetComponent<SpriteRenderer>();
         takeDamageSound = GetComponent<AudioSource>();
+        rb2d = GetComponent<Rigidbody2D>();
+        transform = rb2d.transform;
+        originalX = transform.localPosition.x;
+        returning = false;
+        swiping = false;
+        effectTransform = effectAnim.gameObject.transform;
 
         playerAnim.SetBool("moving", true);
     }
@@ -33,6 +47,7 @@ public class ActionWorldController : MonoBehaviour
     {
 
     }
+
     public void TakeDamage()
     {
         if (flickering)
@@ -43,8 +58,8 @@ public class ActionWorldController : MonoBehaviour
 
         if (health > 0)
         {
-            flickerFramesLeft = framesToFlicker;
-            framesToNextFlicker = 1;
+            invincibleSecondsLeft = flickerInvincibleSeconds;
+            nextFlickSeconds = secondsPerFlick;
             flickering = true;
         }
         else
@@ -78,16 +93,46 @@ public class ActionWorldController : MonoBehaviour
 
     private void Flicker()
     {
-        framesToNextFlicker -= 1;
+        nextFlickSeconds -= Time.deltaTime;
+        invincibleSecondsLeft -= Time.deltaTime;
 
-        if (framesToNextFlicker == 0)
+        if (nextFlickSeconds <= 0)
         {
-            flickerFramesLeft -= 1;
             Color32 color = sprite.color;
             color.a = (byte)(255 - color.a);
             sprite.color = color;
-            framesToNextFlicker = framesPerFlicker;
+            nextFlickSeconds = secondsPerFlick;
         }
+    }
+
+    private void Dash()
+    {
+        if (returning || swiping)
+            return;
+
+        effectAnim.SetTrigger("blast");
+        Vector3 lp = transform.localPosition;
+        lp.x += 350f;
+        transform.localPosition = lp;
+        returning = true;
+    }
+
+    private IEnumerator Swipe()
+    {
+        if (swiping)
+            yield break;
+
+        swiping = true;
+        Vector3 ls = effectTransform.localScale;
+        ls.x *= -1;
+        effectTransform.localScale = ls;
+        effectAnim.SetTrigger("swipe");
+
+        yield return new WaitForSeconds(.5f);
+
+        ls.x *= -1;
+        effectTransform.localScale = ls;
+        swiping = false;
     }
 
     // Update is called once per frame
@@ -98,12 +143,11 @@ public class ActionWorldController : MonoBehaviour
             string input = CheckForInput();
             if (input == "Dash")
             {
-                // dash
-                Debug.Log("Dash");
+                Dash();
             } else if (input == "Swipe")
             {
                 // swipe
-                Debug.Log("Swipe");
+                StartCoroutine(Swipe());
             }
             else if (input == "Blast")
             {
@@ -117,10 +161,26 @@ public class ActionWorldController : MonoBehaviour
         {
             Flicker();
 
-            if (flickerFramesLeft == 0)
+            if (invincibleSecondsLeft <= 0)
             {
+                Color32 color = sprite.color;
+                color.a = 255;
+                sprite.color = color;
                 flickering = false;
             }
+        }
+    }
+
+    private void FixedUpdate()
+    { 
+        if (returning)
+        {
+            Vector3 lp = transform.localPosition;
+            lp.x = Mathf.Max(originalX, lp.x - returnSpeed);
+            transform.localPosition = lp;
+
+            if (lp.x == originalX)
+                returning = false;
         }
     }
 }

@@ -246,8 +246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectAnim: {fileID: 1106183822}
   health: 3
-  framesToFlicker: 60
-  framesPerFlicker: 5
+  flickerInvincibleSeconds: 2
+  secondsPerFlick: 0.1
+  returnSpeed: 5
 --- !u!50 &15337811
 Rigidbody2D:
   serializedVersion: 4
@@ -642,7 +643,7 @@ RectTransform:
   m_Children:
   - {fileID: 1536442618}
   m_Father: {fileID: 1189164656}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -766,6 +767,8 @@ GameObject:
   - component: {fileID: 1106183821}
   - component: {fileID: 1106183822}
   - component: {fileID: 1106183823}
+  - component: {fileID: 1106183824}
+  - component: {fileID: 1106183825}
   m_Layer: 0
   m_Name: PlayerEffects
   m_TagString: Untagged
@@ -857,6 +860,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1106183824
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106183820}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.0001, y: 0.0001}
+  m_EdgeRadius: 0
+--- !u!114 &1106183825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106183820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e30d44b843a6ba498c62c209e270dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 15337810}
+  belongsToPlayer: 1
 --- !u!1 &1160906688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,9 +1092,9 @@ RectTransform:
   - {fileID: 15337808}
   - {fileID: 1160906689}
   - {fileID: 1847250325}
+  - {fileID: 582676861}
   - {fileID: 1562955779}
   - {fileID: 1439913855}
-  - {fileID: 582676861}
   - {fileID: 1218429585}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1655,6 +1698,7 @@ GameObject:
   - component: {fileID: 1731700062}
   - component: {fileID: 1731700064}
   - component: {fileID: 1731700065}
+  - component: {fileID: 1731700066}
   m_Layer: 0
   m_Name: LightningEffect
   m_TagString: Untagged
@@ -1777,7 +1821,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1793,6 +1837,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1731700066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731700060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e30d44b843a6ba498c62c209e270dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 15337810}
+  belongsToPlayer: 0
 --- !u!1 &1847250324
 GameObject:
   m_ObjectHideFlags: 0
