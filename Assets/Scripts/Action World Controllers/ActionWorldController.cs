@@ -5,11 +5,13 @@ using UnityEngine;
 public class ActionWorldController : MonoBehaviour
 {
     public Animator effectAnim;
+    public EnemyManager enemyManager;
     public int health = 3;
     public float flickerInvincibleSeconds = 2f;
     public float secondsPerFlick = .1f;
     // speed at which the player returns to the spot they dashed from
     public float returnSpeed = 3f;
+    public float dashDistance = 500f;
 
     private bool canGiveInput;
     private Animator playerAnim;
@@ -18,10 +20,12 @@ public class ActionWorldController : MonoBehaviour
     private float invincibleSecondsLeft;
     private float nextFlickSeconds;
     private AudioSource takeDamageSound;
+    private AudioSource eyeBlastSound;
+    private AudioSource dashSound;
     private Rigidbody2D rb2d;
     private new Transform transform;
     private float originalX;
-    private bool returning;
+    private bool dashCooldown;
     private bool swiping;
     private Transform effectTransform;
 
@@ -33,10 +37,13 @@ public class ActionWorldController : MonoBehaviour
         flickering = false;
         sprite = GetComponent<SpriteRenderer>();
         takeDamageSound = GetComponent<AudioSource>();
+        eyeBlastSound = effectAnim.gameObject.GetComponent<AudioSource>();
+        dashSound = GameObject.Find("Canvas/Other Effects/DashSound")
+                              .GetComponent<AudioSource>();
         rb2d = GetComponent<Rigidbody2D>();
         transform = rb2d.transform;
         originalX = transform.localPosition.x;
-        returning = false;
+        dashCooldown = false;
         swiping = false;
         effectTransform = effectAnim.gameObject.transform;
 
@@ -67,8 +74,8 @@ public class ActionWorldController : MonoBehaviour
     }
 
     /* Player can do three moves
-     *  - Dash: quickly dash forward, player is invincible for this time and will slowly revert back to their original position.
-     *          Player can't dash again until they reach the original position again.
+     *  - Dash: quickly dash forward or backward depending on position, player is invincible for this 
+     *          time and can switch between these positions at will. There is a cooldown though.
      *  - Swipe: swing their arm to deal damage to enemies in front of them and reflect projectiles.
      *  - Blast: use eye power to blow up all enemies and projectiles. Recharges over time.
      *  
@@ -105,16 +112,24 @@ public class ActionWorldController : MonoBehaviour
         }
     }
 
-    private void Dash()
+    private IEnumerator Dash()
     {
-        if (returning || swiping)
-            return;
+        if (dashCooldown || swiping)
+            yield break;
 
         effectAnim.SetTrigger("blast");
+        dashSound.Play();
         Vector3 lp = transform.localPosition;
-        lp.x += 350f;
+        lp.x += dashDistance;
         transform.localPosition = lp;
-        returning = true;
+
+        dashCooldown = true;
+        // next time, dash backwards
+        dashDistance = -dashDistance;
+
+        yield return new WaitForSeconds(2f);
+
+        dashCooldown = false;
     }
 
     private IEnumerator Swipe()
@@ -135,6 +150,15 @@ public class ActionWorldController : MonoBehaviour
         swiping = false;
     }
 
+    private void Blast()
+    {
+        playerAnim.SetTrigger("poweredUp");
+        effectAnim.SetTrigger("blast");
+        eyeBlastSound.Play();
+
+        enemyManager.KillAllEnemies("blasted");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -143,7 +167,7 @@ public class ActionWorldController : MonoBehaviour
             string input = CheckForInput();
             if (input == "Dash")
             {
-                Dash();
+                StartCoroutine(Dash());
             } else if (input == "Swipe")
             {
                 // swipe
@@ -152,8 +176,7 @@ public class ActionWorldController : MonoBehaviour
             else if (input == "Blast")
             {
                 // blast
-                effectAnim.SetTrigger("blast");
-                Debug.Log("Blast");
+                Blast();
             }
         }
 
@@ -168,19 +191,6 @@ public class ActionWorldController : MonoBehaviour
                 sprite.color = color;
                 flickering = false;
             }
-        }
-    }
-
-    private void FixedUpdate()
-    { 
-        if (returning)
-        {
-            Vector3 lp = transform.localPosition;
-            lp.x = Mathf.Max(originalX, lp.x - returnSpeed);
-            transform.localPosition = lp;
-
-            if (lp.x == originalX)
-                returning = false;
         }
     }
 }

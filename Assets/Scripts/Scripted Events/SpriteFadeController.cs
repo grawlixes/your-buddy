@@ -67,6 +67,10 @@ public class SpriteFadeController : MonoBehaviour
                 {
                     fadeIndex = 0;
                     scrolled = 0;
+
+                    // if this isn't a scene that is fading, destroy the object because it's fading out
+                    if (sceneToLoadAfterFadeOut == -1)
+                        Destroy(this.gameObject);
                 }
             }
         }
@@ -84,8 +88,6 @@ public class SpriteFadeController : MonoBehaviour
                 if (color.a == 255)
                     if (sceneToLoadAfterFadeOut != -1)
                         SceneManager.LoadScene(sceneToLoadAfterFadeOut);
-                    else
-                        Destroy(this.gameObject);
             }
         }
     }

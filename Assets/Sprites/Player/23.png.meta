@@ -25,7 +25,7 @@ TextureImporter:
     second: backArmoredLookingBlast
   - first:
       213: 4722843985515857377
-    second: 23_7
+    second: backArmored
   - first:
       213: 3915270427697739590
     second: sideArmored_0
@@ -40,16 +40,16 @@ TextureImporter:
     second: sideArmored_3
   - first:
       213: 1757271762353067564
-    second: backArmored_0
+    second: sideArmoredBlast_0
   - first:
       213: 7194698879402032293
-    second: 23_13
+    second: sideArmoredBlast_1
   - first:
       213: -3731395925228823330
-    second: 23_14
+    second: sideArmoredBlast_2
   - first:
       213: 2512355731777982005
-    second: 23_15
+    second: sideArmoredBlast_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -286,7 +286,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 23_7
+      name: backArmored
       rect:
         serializedVersion: 2
         x: 144
@@ -391,11 +391,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: backArmored_0
+      name: sideArmoredBlast_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1
         width: 48
         height: 64
       alignment: 0
@@ -412,11 +412,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 23_13
+      name: sideArmoredBlast_1
       rect:
         serializedVersion: 2
         x: 48
-        y: 0
+        y: 1
         width: 48
         height: 64
       alignment: 0
@@ -433,11 +433,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 23_14
+      name: sideArmoredBlast_2
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 1
         width: 48
         height: 64
       alignment: 0
@@ -454,11 +454,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 23_15
+      name: sideArmoredBlast_3
       rect:
         serializedVersion: 2
         x: 144
-        y: 0
+        y: 1
         width: 48
         height: 64
       alignment: 0

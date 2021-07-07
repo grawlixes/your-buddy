@@ -7,9 +7,9 @@ public class SkeletonController : EnemyController
     public float speed = 3f;
 
     // Start is called before the first frame update
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         enemyType = "Skeleton";
         enemyAnim.SetBool("running", true);
     }

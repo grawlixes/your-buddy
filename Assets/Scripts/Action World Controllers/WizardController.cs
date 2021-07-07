@@ -6,24 +6,31 @@ public class WizardController : EnemyController
 {
     public float timePerThunder = 5f;
 
+    private GameObject thunder;
+    private GameObject player;
     private Animator thunderAnim;
 
     private float nextThunder;
     // Start is called before the first frame update
-    public override void Start()
+    public override void Awake()
     {
 
-        base.Start();
+        base.Awake();
 
         nextThunder = timePerThunder;
-        thunderAnim = GameObject.Find("Canvas/Other Effects/LightningEffect")
-                                .GetComponent<Animator>();
+        thunder = GameObject.Find("Canvas/Other Effects/LightningEffect");
+        player = GameObject.Find("Canvas/Player");
+        thunderAnim = thunder.GetComponent<Animator>();
         enemyType = "Wizard";
-
     }
+
     public IEnumerator Thunder()
     {
+        Vector3 pos = thunder.transform.localPosition;
+        pos.x = player.transform.localPosition.x;
+        thunder.transform.localPosition = pos;
         effectAnim.SetTrigger("circle");
+        thunderAnim.SetTrigger("circle");
         yield return new WaitForSeconds(1);
         thunderAnim.SetTrigger("thunder");
     }

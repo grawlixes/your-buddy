@@ -28,7 +28,7 @@ public class OverworldController : MonoBehaviour
 
     public IEnumerator WaitThenEnableDialogue(TextBoxController tbcToDestroy)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.5f);
         canTakeDialogue = true;
         Destroy(tbcToDestroy);
     }

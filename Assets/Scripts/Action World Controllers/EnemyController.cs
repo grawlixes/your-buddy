@@ -15,9 +15,10 @@ public class EnemyController : MonoBehaviour
     protected bool dead;
     protected new Transform transform;
     protected AudioSource deathSound;
+    protected EnemyManager manager;
 
     // Start is called before the first frame update
-    public virtual void Start()
+    public virtual void Awake()
     {
         bc2d = GetComponent<BoxCollider2D>();
         enemyAnim = GetComponent<Animator>();
@@ -25,13 +26,25 @@ public class EnemyController : MonoBehaviour
         sfc = GetComponent<SpriteFadeController>();
         rb2d = GetComponent<Rigidbody2D>();
         deathSound = GetComponent<AudioSource>();
+        manager = GameObject.Find("Canvas/Enemy Manager")
+                            .GetComponent<EnemyManager>();
 
         transform = rb2d.transform;
         dead = false;
     }
 
+    public void PlayAnimation(string animation, bool isEffect)
+    {
+        if (isEffect)
+            effectAnim.SetTrigger(animation);
+        else
+            enemyAnim.SetTrigger(animation);
+    }
+
     public virtual void Die()
     {
+        manager.enemiesOnScreen.Remove(this);
+
         deathSound.Play();
         dead = true;
         bc2d.enabled = false;
