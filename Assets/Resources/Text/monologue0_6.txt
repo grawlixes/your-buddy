@@ -1,0 +1,5 @@
+[This attack destroys all enemies, but needs to recharge.]
+[Press left shift to teleport between the left and center stage,]
+[press E to swipe in front of you and deal damage to skeletons,]
+[and press spacebar to wipe out all enemies on screen.]
+[Get hit three times, and you're dead. Be careful.]

@@ -6,12 +6,13 @@ public class ActionWorldController : MonoBehaviour
 {
     public Animator effectAnim;
     public EnemyManager enemyManager;
+    public GameObject dialogueParent;
     public int health = 3;
     public float flickerInvincibleSeconds = 2f;
     public float secondsPerFlick = .1f;
-    // speed at which the player returns to the spot they dashed from
-    public float returnSpeed = 3f;
     public float dashDistance = 500f;
+    public bool dead;
+    public int day;
 
     private bool canGiveInput;
     private Animator playerAnim;
@@ -22,12 +23,15 @@ public class ActionWorldController : MonoBehaviour
     private AudioSource takeDamageSound;
     private AudioSource eyeBlastSound;
     private AudioSource dashSound;
+    private AudioSource music;
     private Rigidbody2D rb2d;
     private new Transform transform;
-    private float originalX;
-    private bool dashCooldown;
+    public bool dashCooldown;
+    private bool blastCooldown;
     private bool swiping;
     private Transform effectTransform;
+    private SpriteFadeController sfc;
+    private bool showingExample;
 
     // Start is called before the first frame update
     void Start()
@@ -42,17 +46,133 @@ public class ActionWorldController : MonoBehaviour
                               .GetComponent<AudioSource>();
         rb2d = GetComponent<Rigidbody2D>();
         transform = rb2d.transform;
-        originalX = transform.localPosition.x;
         dashCooldown = false;
+        blastCooldown = false;
         swiping = false;
         effectTransform = effectAnim.gameObject.transform;
+        sfc = GameObject.Find("Canvas/Black")
+                        .GetComponent<SpriteFadeController>();
+        music = GameObject.Find("Music/Action Theme")
+                          .GetComponent<AudioSource>();
+        showingExample = false;
 
+        if (day == 0)
+            StartCoroutine(StartTutorial());
+    }
+
+    private DialogueController extractDialogueFromChild(int child)
+    {
+        return dialogueParent.transform.GetChild(0)
+                                       .GetComponent<DialogueController>();
+    }
+
+    private void StartGame()
+    {
+        music.Play();
+        blastCooldown = false;
+        dashCooldown = false;
+        swiping = false;
         playerAnim.SetBool("moving", true);
+        enemyManager.inTutorial = false;
+    }
+
+    private IEnumerator StartTutorial()
+    {
+        // welcome to hell
+        yield return new WaitForSeconds(3);
+        DialogueController dc = extractDialogueFromChild(0);
+        dc.TriggerNextDialogue();
+
+        while (dc.inProgress)
+            yield return new WaitForSeconds(1);
+
+        enemyManager.GetTutorialEnemiesInPosition();
+        while (enemyManager.movingTutorialEnemies)
+            yield return new WaitForSeconds(1);
+
+        // looks at enemies
+        yield return new WaitForSeconds(1);
+        playerAnim.SetTrigger("lookAtEnemy");
+        dc.TriggerNextDialogue();
+
+        while (dc.inProgress)
+            yield return new WaitForSeconds(.5f);
+        // start tutorial
+        dc.TriggerNextDialogue();
+
+        while (dc.inProgress)
+            yield return new WaitForSeconds(.5f);
+        blastCooldown = true;
+        showingExample = true;
+
+        // teleport to skeleton
+        while (!dashCooldown)
+            yield return new WaitForSeconds(.25f);
+        dc.TriggerNextDialogue();
+        dashCooldown = true;
+        swiping = true;
+
+        while (dc.inProgress)
+            yield return new WaitForSeconds(.5f);
+        swiping = false;
+        blastCooldown = true;
+
+        // kill skeleton
+        while (!swiping)
+            yield return new WaitForSeconds(.5f);
+        swiping = true;
+        dashCooldown = false;
+        enemyManager.TutorialThunder();
+        dc.TriggerNextDialogue();
+
+        while (dc.inProgress)
+            yield return new WaitForSeconds(.5f);
+        swiping = false;
+        dashCooldown = false;
+
+        while (!dashCooldown)
+            yield return new WaitForSeconds(.5f);
+        dashCooldown = true;
+        swiping = true;
+        dc.TriggerNextDialogue();
+
+        while (dc.inProgress)
+            yield return new WaitForSeconds(.5f);
+        blastCooldown = false;
+
+        while (!blastCooldown)
+            yield return new WaitForSeconds(.5f);
+        showingExample = false;
+        dc.TriggerNextDialogue();
+
+        while (dc.inProgress)
+            yield return new WaitForSeconds(.5f);
+        playerAnim.SetTrigger("gettingReady");
+        yield return new WaitForSeconds(2);
+        dc.TriggerNextDialogue();
+
+        while (dc.inProgress)
+            yield return new WaitForSeconds(.5f);
+
+        StartGame();
+        yield break;
     }
 
     private void Die()
     {
+        dead = true;
+        blastCooldown = true;
+        dashCooldown = true;
+        swiping = true;
+        enemyManager.enabled = false;
 
+        music.Stop();
+
+        enemyManager.KillAllEnemies(null);
+
+        playerAnim.SetTrigger("dead");
+
+        sfc.StartFadingOut();
     }
 
     public void TakeDamage()
@@ -147,22 +267,29 @@ public class ActionWorldController : MonoBehaviour
 
         ls.x *= -1;
         effectTransform.localScale = ls;
-        swiping = false;
+        if (!enemyManager.inTutorial)
+            swiping = false;
     }
 
-    private void Blast()
+    private IEnumerator Blast()
     {
+        if (blastCooldown)
+            yield break;
+        blastCooldown = true;
         playerAnim.SetTrigger("poweredUp");
         effectAnim.SetTrigger("blast");
         eyeBlastSound.Play();
 
         enemyManager.KillAllEnemies("blasted");
+
+        yield return new WaitForSeconds(10f);
+        blastCooldown = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canGiveInput)
+        if (canGiveInput && (!enemyManager.inTutorial || showingExample))
         {
             string input = CheckForInput();
             if (input == "Dash")
@@ -176,7 +303,7 @@ public class ActionWorldController : MonoBehaviour
             else if (input == "Blast")
             {
                 // blast
-                Blast();
+                StartCoroutine(Blast());
             }
         }
 

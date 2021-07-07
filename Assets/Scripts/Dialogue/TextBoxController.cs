@@ -14,6 +14,8 @@ public class TextBoxController : MonoBehaviour
     public string puzzlePrefabToEnableAfterDialogue;
     // Fade this to black after the dialogue is over.
     public SpriteFadeController sfc;
+    // Use this for events.
+    public DialogueController dc;
 
     private const string PATH_TO_BOX_PREFAB = "Prefabs/TextBox";
     private const string PATH_TO_TEXT_PREFAB = "Prefabs/Text";
@@ -28,8 +30,11 @@ public class TextBoxController : MonoBehaviour
         if (textFile == null)
             return;
 
-        player = GameObject.Find("Canvas/Player").GetComponent<OverworldController>();
-        player.canMove = false;
+        GameObject playerGO = GameObject.Find("Canvas/Player");
+        if (playerGO != null)
+            player = GameObject.Find("Canvas/Player").GetComponent<OverworldController>();
+        if (player != null)
+            player.canMove = false;
 
         StreamReader sr = new StreamReader("Assets/Resources/Text/" + textFile);
         string rawString = sr.ReadToEnd();
@@ -63,13 +68,29 @@ public class TextBoxController : MonoBehaviour
                     sfc.StartFadingOut();
                 } else
                 {
-                    player.canMove = true;
+                    if (player != null)
+                        player.canMove = true;
                 }
-                StartCoroutine(player.WaitThenEnableDialogue(this.GetComponent<TextBoxController>()));
+
+                if (player != null)
+                    StartCoroutine(player.WaitThenEnableDialogue(this));
+                else
+                {
+                    dc.inProgress = false;
+                    Destroy(this);
+                }
             }
         }
     }
 
+    private string ReplacePnameInString(string textString)
+    {
+        if (textString.Contains("PNAME")) {
+            return textString.Replace("PNAME", PlayerPrefs.GetString("PNAME"));
+        }
+
+        return textString;
+    }
     private void TextBoxFactory(string textString)
     {
         GameObject textBox = Resources.Load(PATH_TO_BOX_PREFAB) as GameObject;

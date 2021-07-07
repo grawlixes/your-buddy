@@ -58,7 +58,7 @@ public class SpriteFadeController : MonoBehaviour
 
             if (framesToNextFade == 0)
             {
-                scrolled++;
+                scrolled += 3;
                 color.a = (byte)(255 - scrolled);
                 sprite.color = color;
                 framesToNextFade = numFramesPerFade;
@@ -81,7 +81,7 @@ public class SpriteFadeController : MonoBehaviour
 
             if (framesToNextFade == 0)
             {
-                color.a += 1;
+                color.a += 3;
                 sprite.color = color;
                 framesToNextFade = numFramesPerFade;
 

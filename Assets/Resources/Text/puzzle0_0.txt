@@ -3,3 +3,4 @@ The faucet is leaking.
 You found a weird-looking cube in the sink.
 It seems to be a puzzle.
 [Click on the buttons to make them all green.]
+[Highlighted buttons on mouseover will be clicked at once.]

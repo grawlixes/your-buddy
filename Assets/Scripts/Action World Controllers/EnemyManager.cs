@@ -7,6 +7,8 @@ public class EnemyManager : MonoBehaviour
     public List<EnemyController> enemiesOnScreen;
     public float timeToSpawnSkeleton = 3f;
     public float timeToSpawnWizard = 7f;
+    public bool inTutorial = true;
+    public bool movingTutorialEnemies = false;
 
     private float timeLeftToSpawnSkeleton;
     private float timeLeftToSpawnWizard;
@@ -14,14 +16,27 @@ public class EnemyManager : MonoBehaviour
 
     private const string SKELETON_PREFAB_NAME = "Prefabs/Skeleton";
     private const string WIZARD_PREFAB_NAME = "Prefabs/Wizard";
-    private Vector3 WIZARD_START_POSITION = new Vector3(700, 250, -1);
+    private Vector3 WIZARD_START_POSITION = new Vector3(1100, 250, -1);
     private Vector3 SKELETON_START_POSITION = new Vector3(1100, -517, -1);
+    private float WIZARD_TUTORIAL_X = 600f;
+    private float SKELETON_TUTORIAL_X = 100f;
 
     private void Start()
     {
         timeLeftToSpawnSkeleton = timeToSpawnSkeleton;
         timeLeftToSpawnWizard = timeToSpawnWizard;
         wizardOnScreen = true;
+    }
+
+    public void GetTutorialEnemiesInPosition()
+    {
+        movingTutorialEnemies = true;
+    }
+
+    public void TutorialThunder()
+    {
+        WizardController wizard = (WizardController) enemiesOnScreen[0];
+        StartCoroutine(wizard.Thunder(true));
     }
 
     // Kills all enemies on screen. 
@@ -61,22 +76,52 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeftToSpawnSkeleton -= Time.deltaTime;
-        if (timeLeftToSpawnSkeleton <= 0)
+        if (movingTutorialEnemies)
         {
-            SpawnSkeleton();
-            timeToSpawnSkeleton -= .1f;
-            timeLeftToSpawnSkeleton = timeToSpawnSkeleton;
-        }
+            Transform wizard = enemiesOnScreen[0].GetComponent<Rigidbody2D>().transform;
+            Transform skeleton = enemiesOnScreen[1].GetComponent<Rigidbody2D>().transform;
 
-        if (!wizardOnScreen)
-        {
-            timeLeftToSpawnWizard -= Time.deltaTime;
-            if (timeLeftToSpawnWizard <= 0)
+            int inPlace = 0;
+            if (wizard.localPosition.x > WIZARD_TUTORIAL_X)
             {
-                SpawnWizard();
-                timeToSpawnWizard -= .1f;
-                timeLeftToSpawnWizard = timeToSpawnWizard;
+                var lp = wizard.localPosition;
+                lp.x -= 10f;
+                wizard.localPosition = lp;
+            }
+            else
+                inPlace++;
+
+            if (skeleton.localPosition.x > SKELETON_TUTORIAL_X)
+            {
+                var lp = skeleton.localPosition;
+                lp.x -= 8f;
+                skeleton.localPosition = lp;
+            }
+            else
+                inPlace++;
+
+            if (inPlace == 2)
+                movingTutorialEnemies = false;
+        }
+        else if (!inTutorial)
+        {
+            timeLeftToSpawnSkeleton -= Time.deltaTime;
+            if (timeLeftToSpawnSkeleton <= 0)
+            {
+                SpawnSkeleton();
+                timeToSpawnSkeleton -= .1f;
+                timeLeftToSpawnSkeleton = timeToSpawnSkeleton;
+            }
+
+            if (!wizardOnScreen)
+            {
+                timeLeftToSpawnWizard -= Time.deltaTime;
+                if (timeLeftToSpawnWizard <= 0)
+                {
+                    SpawnWizard();
+                    timeToSpawnWizard -= .1f;
+                    timeLeftToSpawnWizard = timeToSpawnWizard;
+                }
             }
         }
     }

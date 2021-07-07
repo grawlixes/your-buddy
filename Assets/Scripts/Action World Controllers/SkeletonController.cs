@@ -30,7 +30,7 @@ public class SkeletonController : EnemyController
     // Update is called once per frame
     void Update()
     {
-        if (!dead)
+        if (!dead && !manager.inTutorial)
             MoveLeft();
     }
 }

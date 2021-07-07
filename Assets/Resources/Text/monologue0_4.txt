@@ -1,0 +1,3 @@
+[Be careful when you see this icon or hear this sound.]
+[These signs mean that the wizard is about to attack.]
+[Press left shift again to teleport away from the attack.]

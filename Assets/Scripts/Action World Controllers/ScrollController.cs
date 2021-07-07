@@ -10,12 +10,18 @@ public class ScrollController : MonoBehaviour
 
     private const float SCROLL_SPEED = 5f;
     private const string PATH_TO_BACKGROUND_PREFAB = "Prefabs/BG";
+    private ActionWorldController playerAwc;
+    private EnemyManager manager;
 
     private GameObject CANVAS;
 
     void Start()
     {
         CANVAS = GameObject.Find("Canvas");
+        playerAwc = GameObject.Find("Canvas/Player")
+                              .GetComponent<ActionWorldController>();
+        manager = GameObject.Find("Canvas/Enemy Manager")
+                            .GetComponent<EnemyManager>();
     }
 
     // Call this when the current sprite becomes invisible, so we have infinite scroll.
@@ -35,6 +41,12 @@ public class ScrollController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (manager.inTutorial)
+            return;
+
+        if (playerAwc.dead)
+            this.enabled = false;
+
         Vector3 lp = transform.localPosition;
         lp.x -= SCROLL_SPEED;
         transform.localPosition = lp;

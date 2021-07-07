@@ -18,6 +18,7 @@ public class DialogueController : MonoBehaviour
     public SpriteFadeController sfc;
     // If not null, fade to black after this prompt.
     public int fadeAfterThisPrompt;
+    public bool inProgress = false;
 
     private int promptIndex = 0;
 
@@ -53,11 +54,14 @@ public class DialogueController : MonoBehaviour
     // Triggers the "next" batch of dialogue.
     public void TriggerNextDialogue()
     {
+        inProgress = true;
+
         string file = GetFileName();
 
         TextBoxController tbc = gameObject.AddComponent<TextBoxController>();
         tbc.enabled = false;
         tbc.textFile = file;
+        tbc.dc = this;
         // this is a little confusing, but it works and is generic enough.
         bool isFinalDialogueBeforeFade = (fadeAfterThisPrompt == promptIndex && // is this the index we want to fade after?
                                           promptIndex != numUniquePrompts); // are we *on* the dialogue, or are we "past" it (read below)?

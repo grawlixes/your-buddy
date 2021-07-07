@@ -8,6 +8,19 @@ public class DialogueColliderController : MonoBehaviour
 
     private bool inside = false;
 
+    private void Start()
+    {
+        if (player == null)
+        {
+            dialogueController.TriggerNextDialogue();
+
+            if (shouldDeleteOnActivation)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
