@@ -152,7 +152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728232003}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &77995997
 MonoBehaviour:
@@ -173,6 +173,7 @@ MonoBehaviour:
   puzzlePrefabToEnableAfterDialogue: 
   sfc: {fileID: 0}
   fadeAfterThisPrompt: 0
+  inProgress: 0
 --- !u!1 &155392254
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +224,7 @@ MonoBehaviour:
   puzzlePrefabToEnableAfterDialogue: 
   sfc: {fileID: 0}
   fadeAfterThisPrompt: 0
+  inProgress: 0
 --- !u!1 &191617391
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +252,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1176818584}
   - {fileID: 1424766451}
   - {fileID: 1350853501}
   - {fileID: 319353037}
@@ -259,6 +262,7 @@ RectTransform:
   - {fileID: 1212137259}
   - {fileID: 441055242}
   - {fileID: 965026850}
+  - {fileID: 330697151}
   m_Father: {fileID: 483955199}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -267,6 +271,81 @@ RectTransform:
   m_AnchoredPosition: {x: 500, y: 0}
   m_SizeDelta: {x: 97.14, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &280201542
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 411036447}
+    m_Modifications:
+    - target: {fileID: 4387112547080699282, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_Name
+      value: DogTextTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c98fce5371a7bb14c923fef26df9c24b, type: 3}
+--- !u!4 &280201543 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5195819622753348921, guid: c98fce5371a7bb14c923fef26df9c24b,
+    type: 3}
+  m_PrefabInstance: {fileID: 280201542}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &287383792
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +413,6 @@ GameObject:
   m_Component:
   - component: {fileID: 289530236}
   - component: {fileID: 289530238}
-  - component: {fileID: 289530237}
   m_Layer: 0
   m_Name: HomeTheme
   m_TagString: Untagged
@@ -356,19 +434,6 @@ Transform:
   m_Father: {fileID: 368998079}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &289530237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 289530235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a01810a4be304f04ea4c39a85916e90b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  music: {fileID: 289530238}
 --- !u!82 &289530238
 AudioSource:
   m_ObjectHideFlags: 0
@@ -497,6 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 2077851923}
   player: {fileID: 1769511097}
+  isPuzzle: 0
   shouldDeleteOnActivation: 0
 --- !u!224 &319353037
 RectTransform:
@@ -510,7 +576,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191617392}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -530,7 +596,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -192.53769, y: -311.41995}
+  m_Offset: {x: -207.21005, y: -311.41995}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -541,9 +607,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 75.94757, y: 194.82988}
+  m_Size: {x: 46.602844, y: 194.8299}
   m_EdgeRadius: 0
---- !u!1 &363361631
+--- !u!1 &330697150
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -551,48 +617,77 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 363361632}
-  - component: {fileID: 363361633}
+  - component: {fileID: 330697151}
+  - component: {fileID: 330697153}
+  - component: {fileID: 330697152}
   m_Layer: 0
-  m_Name: Table
+  m_Name: DoorTextCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &363361632
-Transform:
+--- !u!224 &330697151
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363361631}
+  m_GameObject: {fileID: 330697150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 728232003}
-  m_RootOrder: 6
+  m_Father: {fileID: 191617392}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &363361633
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -245, y: -160}
+  m_SizeDelta: {x: 94.07, y: 186}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!61 &330697152
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330697150}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -32.608967, y: -389.18353}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 108.22675, y: 133.20602}
+  m_EdgeRadius: 0
+--- !u!114 &330697153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363361631}
+  m_GameObject: {fileID: 330697150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebfb56f2d490e664c8de274bcc16b159, type: 3}
+  m_Script: {fileID: 11500000, guid: 23502bffdf249304d9d38207416e3eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueFamily: table
-  dayDependent: 1
-  day: 0
-  numUniquePrompts: 1
-  puzzlePrefabToEnableAfterDialogue: 
-  sfc: {fileID: 0}
-  fadeAfterThisPrompt: 0
+  dialogueController: {fileID: 464911175}
+  player: {fileID: 1769511097}
+  isPuzzle: 0
+  shouldDeleteOnActivation: 0
 --- !u!1 &368998078
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,6 +733,7 @@ GameObject:
   - component: {fileID: 411036450}
   - component: {fileID: 411036449}
   - component: {fileID: 411036448}
+  - component: {fileID: 411036453}
   m_Layer: 6
   m_Name: Dog
   m_TagString: Untagged
@@ -655,7 +751,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 244, y: -256, z: 3.000366}
   m_LocalScale: {x: 93.59998, y: 93.59998, z: 143.99998}
-  m_Children: []
+  m_Children:
+  - {fileID: 280201543}
   m_Father: {fileID: 483955199}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -694,7 +791,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1769511093}
   anim: {fileID: 411036452}
-  jumpSound: {fileID: 0}
+  jumpSound: {fileID: 411036453}
+  dc: {fileID: 548036428}
+  playerCanInteract: 0
+  sleeping: 0
   collider: {fileID: 411036450}
 --- !u!61 &411036450
 BoxCollider2D:
@@ -793,6 +893,102 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &411036453
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411036446}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a0c3a063ec870e34899f76dde1f9ded3, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &441055241
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +1019,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191617392}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -868,9 +1064,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23502bffdf249304d9d38207416e3eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueController: {fileID: 1725977587}
+  dialogueController: {fileID: 930706264}
   player: {fileID: 1769511097}
-  shouldDeleteOnActivation: 1
+  isPuzzle: 0
+  shouldDeleteOnActivation: 0
+--- !u!1 &464911173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 464911174}
+  - component: {fileID: 464911175}
+  m_Layer: 0
+  m_Name: Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &464911174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464911173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 728232003}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &464911175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464911173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfb56f2d490e664c8de274bcc16b159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueFamily: door
+  dayDependent: 1
+  day: 0
+  numUniquePrompts: 1
+  puzzlePrefabToEnableAfterDialogue: 
+  sfc: {fileID: 1435287681}
+  fadeAfterThisPrompt: 1
+  inProgress: 0
 --- !u!1 &483955197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +1248,57 @@ Transform:
   m_Father: {fileID: 483955199}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &548036426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548036427}
+  - component: {fileID: 548036428}
+  m_Layer: 0
+  m_Name: Dog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &548036427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548036426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 728232003}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &548036428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548036426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfb56f2d490e664c8de274bcc16b159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueFamily: dogHome
+  dayDependent: 1
+  day: 0
+  numUniquePrompts: 3
+  puzzlePrefabToEnableAfterDialogue: 
+  sfc: {fileID: 0}
+  fadeAfterThisPrompt: 0
+  inProgress: 0
 --- !u!1 &553930296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,6 +1349,7 @@ MonoBehaviour:
   puzzlePrefabToEnableAfterDialogue: 
   sfc: {fileID: 0}
   fadeAfterThisPrompt: 0
+  inProgress: 0
 --- !u!1 &668223523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,7 +1380,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191617392}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1127,6 +1427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 1041458680}
   player: {fileID: 1769511097}
+  isPuzzle: 0
   shouldDeleteOnActivation: 0
 --- !u!1 &706170646
 GameObject:
@@ -1158,7 +1459,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191617392}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1205,6 +1506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 774021304}
   player: {fileID: 1769511097}
+  isPuzzle: 0
   shouldDeleteOnActivation: 0
 --- !u!1 &728232002
 GameObject:
@@ -1239,9 +1541,12 @@ Transform:
   - {fileID: 1725977586}
   - {fileID: 774021303}
   - {fileID: 1041458679}
-  - {fileID: 363361632}
   - {fileID: 77995996}
   - {fileID: 1326325384}
+  - {fileID: 464911174}
+  - {fileID: 930706263}
+  - {fileID: 548036427}
+  - {fileID: 1185532104}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1295,6 +1600,7 @@ MonoBehaviour:
   puzzlePrefabToEnableAfterDialogue: 
   sfc: {fileID: 0}
   fadeAfterThisPrompt: 0
+  inProgress: 0
 --- !u!1 &870283682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1631,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191617392}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1370,8 +1676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23502bffdf249304d9d38207416e3eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueController: {fileID: 363361633}
+  dialogueController: {fileID: 1725977587}
   player: {fileID: 1769511097}
+  isPuzzle: 1
   shouldDeleteOnActivation: 0
 --- !u!1 &890910289
 GameObject:
@@ -1513,6 +1820,57 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 86.285126, y: 143.14186}
   m_EdgeRadius: 0
+--- !u!1 &930706262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 930706263}
+  - component: {fileID: 930706264}
+  m_Layer: 0
+  m_Name: Sink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &930706263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930706262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 728232003}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &930706264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930706262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfb56f2d490e664c8de274bcc16b159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueFamily: sink
+  dayDependent: 1
+  day: 0
+  numUniquePrompts: 3
+  puzzlePrefabToEnableAfterDialogue: 
+  sfc: {fileID: 0}
+  fadeAfterThisPrompt: 0
+  inProgress: 0
 --- !u!1 &965026849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,7 +1901,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191617392}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1590,6 +1948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 1326325385}
   player: {fileID: 1769511097}
+  isPuzzle: 0
   shouldDeleteOnActivation: 0
 --- !u!1 &1041458678
 GameObject:
@@ -1635,12 +1994,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFamily: fireplace
-  dayDependent: 0
+  dayDependent: 1
   day: 0
   numUniquePrompts: 1
   puzzlePrefabToEnableAfterDialogue: 
   sfc: {fileID: 0}
   fadeAfterThisPrompt: 0
+  inProgress: 0
 --- !u!1 &1089618511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +2151,136 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.149698, y: 1.892272}
   m_EdgeRadius: 0
+--- !u!1 &1176818583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1176818584}
+  - component: {fileID: 1176818586}
+  - component: {fileID: 1176818585}
+  m_Layer: 0
+  m_Name: TVTextCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1176818584
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176818583}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0001068, y: 1.0001068, z: 1.0001068}
+  m_Children: []
+  m_Father: {fileID: 191617392}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -145.00003, y: -133}
+  m_SizeDelta: {x: 99.99, y: 145.03}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!61 &1176818585
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176818583}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -696.92004, y: -351.07874}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 145.95831, y: 177.77869}
+  m_EdgeRadius: 0
+--- !u!114 &1176818586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176818583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23502bffdf249304d9d38207416e3eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueController: {fileID: 1185532105}
+  player: {fileID: 1769511097}
+  isPuzzle: 0
+  shouldDeleteOnActivation: 0
+--- !u!1 &1185532103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1185532104}
+  - component: {fileID: 1185532105}
+  m_Layer: 0
+  m_Name: TV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1185532104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185532103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 728232003}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1185532105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185532103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfb56f2d490e664c8de274bcc16b159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueFamily: tv
+  dayDependent: 1
+  day: 0
+  numUniquePrompts: 1
+  puzzlePrefabToEnableAfterDialogue: 
+  sfc: {fileID: 0}
+  fadeAfterThisPrompt: 0
+  inProgress: 0
 --- !u!1 &1212137258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,7 +2311,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191617392}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1868,6 +2358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 77995997}
   player: {fileID: 1769511097}
+  isPuzzle: 0
   shouldDeleteOnActivation: 0
 --- !u!1 &1326325383
 GameObject:
@@ -1898,7 +2389,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728232003}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1326325385
 MonoBehaviour:
@@ -1919,6 +2410,7 @@ MonoBehaviour:
   puzzlePrefabToEnableAfterDialogue: 
   sfc: {fileID: 0}
   fadeAfterThisPrompt: 0
+  inProgress: 0
 --- !u!1 &1350853500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,7 +2441,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191617392}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1970,6 +2462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 155392256}
   player: {fileID: 1769511097}
+  isPuzzle: 0
   shouldDeleteOnActivation: 0
 --- !u!61 &1350853503
 BoxCollider2D:
@@ -2027,7 +2520,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191617392}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2048,6 +2541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 553930298}
   player: {fileID: 1769511097}
+  isPuzzle: 0
   shouldDeleteOnActivation: 0
 --- !u!61 &1424766453
 BoxCollider2D:
@@ -2560,6 +3054,7 @@ MonoBehaviour:
   puzzlePrefabToEnableAfterDialogue: Prefabs/Puzzle3x3
   sfc: {fileID: 0}
   fadeAfterThisPrompt: 0
+  inProgress: 0
 --- !u!1 &1753251763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,5 +3430,6 @@ MonoBehaviour:
   day: 0
   numUniquePrompts: 1
   puzzlePrefabToEnableAfterDialogue: 
-  sfc: {fileID: 1435287681}
-  fadeAfterThisPrompt: 1
+  sfc: {fileID: 0}
+  fadeAfterThisPrompt: 0
+  inProgress: 0

@@ -16,6 +16,7 @@ public class TextBoxController : MonoBehaviour
     public SpriteFadeController sfc;
     // Use this for events.
     public DialogueController dc;
+    public bool comesFromPuzzle;
 
     private const string PATH_TO_BOX_PREFAB = "Prefabs/TextBox";
     private const string PATH_TO_TEXT_PREFAB = "Prefabs/Text";
@@ -73,7 +74,7 @@ public class TextBoxController : MonoBehaviour
                 }
 
                 if (player != null)
-                    StartCoroutine(player.WaitThenEnableDialogue(this));
+                    StartCoroutine(player.WaitThenEnableDialogue(this, comesFromPuzzle));
                 else
                 {
                     dc.inProgress = false;
@@ -87,7 +88,7 @@ public class TextBoxController : MonoBehaviour
     {
         if (textString.Contains("PNAME")) {
             return textString.Replace("PNAME", PlayerPrefs.GetString("PNAME"));
-        }
+        } 
 
         return textString;
     }
@@ -97,7 +98,7 @@ public class TextBoxController : MonoBehaviour
         currentTextBox = GameObject.Instantiate(textBox);
 
         GameObject text = Resources.Load(PATH_TO_TEXT_PREFAB) as GameObject;
-        text.GetComponent<TextMeshPro>().text = textString;
+        text.GetComponent<TextMeshPro>().text = ReplacePnameInString(textString);
         currentText = GameObject.Instantiate(text);
 
         currentText.transform.SetParent(currentTextBox.transform, false);

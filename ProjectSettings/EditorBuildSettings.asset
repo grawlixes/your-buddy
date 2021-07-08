@@ -6,15 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: 
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/RoomScene.unity
+    path: Assets/Scenes/Room/RoomScene0.unity
     guid: be8dd8bd17d9c1147bc9c5ce31ecae1c
   - enabled: 1
-    path: Assets/Scenes/HomeScene.unity
+    path: Assets/Scenes/Home/HomeScene0.unity
     guid: 5667249cdc64c71448faf30fe72e9684
   - enabled: 1
-    path: Assets/Scenes/ActionScene.unity
+    path: Assets/Scenes/Action/ActionScene0.unity
     guid: 6470f9ff730c3b347b862c71b85cf275
+  - enabled: 1
+    path: Assets/Scenes/Black/BlackScene0.unity
+    guid: 4be670c338b50b4468e97a74398f66fe
+  - enabled: 1
+    path: Assets/Scenes/Room/RoomScene1.unity
+    guid: df0c6b7297d282448aa30f8ab54d13d8
+  - enabled: 1
+    path: Assets/Scenes/Home/HomeScene1.unity
+    guid: 2609f2967f0f09f4fb8f385c5fec0c36
+  - enabled: 1
+    path: Assets/Scenes/Action/ActionScene1.unity
+    guid: ef593c77955463146a62bd31307d984b
+  - enabled: 1
+    path: Assets/Scenes/Room/RoomScene2.unity
+    guid: a9e175237fb789b4fa73b20d279242f5
+  - enabled: 1
+    path: Assets/Scenes/Home/HomeScene2.unity
+    guid: b3816699857bb38459299da5d8fabe39
+  - enabled: 1
+    path: Assets/Scenes/Action/ActionScene2.unity
+    guid: 09c5ad5a8efe62a46991340c3e91fa02
   m_configObjects: {}

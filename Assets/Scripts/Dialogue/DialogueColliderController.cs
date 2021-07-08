@@ -4,6 +4,7 @@ public class DialogueColliderController : MonoBehaviour
 {
     public DialogueController dialogueController;
     public OverworldController player;
+    public bool isPuzzle;
     public bool shouldDeleteOnActivation;
 
     private bool inside = false;
@@ -12,7 +13,7 @@ public class DialogueColliderController : MonoBehaviour
     {
         if (player == null)
         {
-            dialogueController.TriggerNextDialogue();
+            dialogueController.TriggerNextDialogue(false);
 
             if (shouldDeleteOnActivation)
             {
@@ -38,8 +39,8 @@ public class DialogueColliderController : MonoBehaviour
         if (inside && player.canTakeDialogue && Input.GetButtonDown("Use"))
         {
             player.canTakeDialogue = false;
-            dialogueController.TriggerNextDialogue();
-
+            dialogueController.TriggerNextDialogue(isPuzzle);
+            isPuzzle = false;
             if (shouldDeleteOnActivation)
             {
                 Destroy(this.gameObject);

@@ -1,0 +1,4 @@
+You solved the puzzle!
+A piece of paper fell out.
+The number "1" is on the paper.
+What could this number be used for?

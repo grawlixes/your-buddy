@@ -729,7 +729,7 @@ MonoBehaviour:
   shape: hLine
   day: 0
   options:
-  - Phone
+  - Door
 --- !u!1 &4552464906515229311
 GameObject:
   m_ObjectHideFlags: 0

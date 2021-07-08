@@ -1,0 +1,2 @@
+The plant says hello to you.
+You say hello back.

@@ -111,7 +111,7 @@ public class PuzzleController : MonoBehaviour
 
             victoryDialogue = canvas.AddComponent<DialogueController>();
             victoryDialogue.SetFamily("victory", true, day, 1, null);
-            victoryDialogue.TriggerNextDialogue();
+            victoryDialogue.TriggerNextDialogue(false);
 
             Destroy(gameObject);
         }

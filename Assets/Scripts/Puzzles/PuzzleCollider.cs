@@ -33,7 +33,7 @@ public class PuzzleCollider : MonoBehaviour
         if (inside && player.canTakeDialogue && Input.GetButtonDown("Use"))
         {
             player.canTakeDialogue = false;
-            dialogue.TriggerNextDialogue();
+            dialogue.TriggerNextDialogue(true);
         }
     }
 }

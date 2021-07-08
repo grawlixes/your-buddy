@@ -52,7 +52,7 @@ public class DialogueController : MonoBehaviour
     }
 
     // Triggers the "next" batch of dialogue.
-    public void TriggerNextDialogue()
+    public void TriggerNextDialogue(bool comesFromPuzzle)
     {
         inProgress = true;
 
@@ -61,6 +61,7 @@ public class DialogueController : MonoBehaviour
         TextBoxController tbc = gameObject.AddComponent<TextBoxController>();
         tbc.enabled = false;
         tbc.textFile = file;
+        tbc.comesFromPuzzle = comesFromPuzzle;
         tbc.dc = this;
         // this is a little confusing, but it works and is generic enough.
         bool isFinalDialogueBeforeFade = (fadeAfterThisPrompt == promptIndex && // is this the index we want to fade after?
@@ -78,5 +79,7 @@ public class DialogueController : MonoBehaviour
          * If we didn't, we would have to show the user the stale dialogue first, which could confuse them.
          */
         promptIndex = Mathf.Min(promptIndex + 1, numUniquePrompts);
+        // don't enable this twice
+        puzzlePrefabToEnableAfterDialogue = "";
     }
 }

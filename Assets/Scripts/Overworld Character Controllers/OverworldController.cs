@@ -29,10 +29,11 @@ public class OverworldController : MonoBehaviour
         }
     }
 
-    public IEnumerator WaitThenEnableDialogue(TextBoxController tbcToDestroy)
+    public IEnumerator WaitThenEnableDialogue(TextBoxController tbcToDestroy, bool comesFromPuzzle)
     {
         yield return new WaitForSeconds(.5f);
-        canTakeDialogue = true;
+        if (!comesFromPuzzle)
+            canTakeDialogue = true;
         Destroy(tbcToDestroy);
     }
 

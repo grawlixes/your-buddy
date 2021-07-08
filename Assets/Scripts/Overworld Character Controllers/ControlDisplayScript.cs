@@ -10,6 +10,6 @@ public class ControlDisplayScript : MonoBehaviour
     void Start()
     {
         player.canTakeDialogue = false;
-        helpDialogue.TriggerNextDialogue();
+        helpDialogue.TriggerNextDialogue(false);
     }
 }

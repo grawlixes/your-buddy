@@ -36,7 +36,7 @@ public class ActionWorldController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canGiveInput = true;
+        canGiveInput = false;
         playerAnim = GetComponent<Animator>();
         flickering = false;
         sprite = GetComponent<SpriteRenderer>();
@@ -58,11 +58,13 @@ public class ActionWorldController : MonoBehaviour
 
         if (day == 0)
             StartCoroutine(StartTutorial());
+        else
+            StartCoroutine(StartDialogueAndBegin());
     }
 
     private DialogueController extractDialogueFromChild(int child)
     {
-        return dialogueParent.transform.GetChild(0)
+        return dialogueParent.transform.GetChild(child)
                                        .GetComponent<DialogueController>();
     }
 
@@ -74,14 +76,41 @@ public class ActionWorldController : MonoBehaviour
         swiping = false;
         playerAnim.SetBool("moving", true);
         enemyManager.inTutorial = false;
+        canGiveInput = true;
+    }
+
+    private IEnumerator StartDialogueAndBegin()
+    {
+        yield return new WaitForSeconds(3f);
+        playerAnim.SetTrigger("gettingReady");
+
+        DialogueController dc = extractDialogueFromChild(0);
+        dc.TriggerNextDialogue(false);
+
+        while (dc.inProgress)
+            yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
+        dc.TriggerNextDialogue(false);
+
+        while (dc.inProgress)
+            yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);
+
+        StartGame();
+        yield break;
     }
 
     private IEnumerator StartTutorial()
     {
+        enemyManager.inTutorial = true;
+        canGiveInput = true;
+
         // welcome to hell
+        // there are, like, at least three ways off the top of my head to generalize this garbage.
+        // Am I gonna generalize it during this game jam, though? Take a guess
         yield return new WaitForSeconds(3);
         DialogueController dc = extractDialogueFromChild(0);
-        dc.TriggerNextDialogue();
+        dc.TriggerNextDialogue(false);
 
         while (dc.inProgress)
             yield return new WaitForSeconds(1);
@@ -93,12 +122,12 @@ public class ActionWorldController : MonoBehaviour
         // looks at enemies
         yield return new WaitForSeconds(1);
         playerAnim.SetTrigger("lookAtEnemy");
-        dc.TriggerNextDialogue();
+        dc.TriggerNextDialogue(false);
 
         while (dc.inProgress)
             yield return new WaitForSeconds(.5f);
         // start tutorial
-        dc.TriggerNextDialogue();
+        dc.TriggerNextDialogue(false);
 
         while (dc.inProgress)
             yield return new WaitForSeconds(.5f);
@@ -108,7 +137,7 @@ public class ActionWorldController : MonoBehaviour
         // teleport to skeleton
         while (!dashCooldown)
             yield return new WaitForSeconds(.25f);
-        dc.TriggerNextDialogue();
+        dc.TriggerNextDialogue(false);
         dashCooldown = true;
         swiping = true;
 
@@ -121,20 +150,22 @@ public class ActionWorldController : MonoBehaviour
         while (!swiping)
             yield return new WaitForSeconds(.5f);
         swiping = true;
+        canGiveInput = false;
         dashCooldown = false;
         enemyManager.TutorialThunder();
-        dc.TriggerNextDialogue();
+        dc.TriggerNextDialogue(false);
 
         while (dc.inProgress)
             yield return new WaitForSeconds(.5f);
         swiping = false;
         dashCooldown = false;
 
+        canGiveInput = true;
         while (!dashCooldown)
             yield return new WaitForSeconds(.5f);
         dashCooldown = true;
         swiping = true;
-        dc.TriggerNextDialogue();
+        dc.TriggerNextDialogue(false);
 
         while (dc.inProgress)
             yield return new WaitForSeconds(.5f);
@@ -143,13 +174,13 @@ public class ActionWorldController : MonoBehaviour
         while (!blastCooldown)
             yield return new WaitForSeconds(.5f);
         showingExample = false;
-        dc.TriggerNextDialogue();
+        dc.TriggerNextDialogue(false);
 
         while (dc.inProgress)
             yield return new WaitForSeconds(.5f);
         playerAnim.SetTrigger("gettingReady");
         yield return new WaitForSeconds(2);
-        dc.TriggerNextDialogue();
+        dc.TriggerNextDialogue(false);
 
         while (dc.inProgress)
             yield return new WaitForSeconds(.5f);
@@ -267,8 +298,7 @@ public class ActionWorldController : MonoBehaviour
 
         ls.x *= -1;
         effectTransform.localScale = ls;
-        if (!enemyManager.inTutorial)
-            swiping = false;
+        swiping = false;
     }
 
     private IEnumerator Blast()

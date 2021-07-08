@@ -9,11 +9,17 @@ public class DogFollowController : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            DogController dc = dog.GetComponent<DogController>();
-            dc.enabled = true;
-            dc.JumpOffBed();
-
-            collider.enabled = false;
+            StartFollowing();
         }
+    }
+
+    public void StartFollowing()
+    {
+        DogController dc = dog.GetComponent<DogController>();
+        dc.enabled = true;
+        dc.JumpOffBed();
+
+        if (collider != null)
+            collider.enabled = false;
     }
 }

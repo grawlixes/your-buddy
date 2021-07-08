@@ -7,7 +7,10 @@ public class DogController : MonoBehaviour
     public GameObject player;
     public Animator anim;
     public AudioSource jumpSound;
-    
+    public DialogueController dc;
+    public bool playerCanInteract = false;
+    public bool sleeping;
+
     public new BoxCollider2D collider;
 
     private const float ACCEPTABLE_DISTANCE = 20f;
@@ -16,8 +19,10 @@ public class DogController : MonoBehaviour
     private const float SPEED_MODIFIER_WAYPOINT = 10f;
 
     private new Rigidbody2D rigidbody;
+    private OverworldController oc;
     private Rigidbody2D playerRigidbody;
     private bool jumping = false;
+    private AudioSource barkSound;
 
     private Vector3 waypoint;
     private bool playerIsWaypoint;
@@ -27,7 +32,9 @@ public class DogController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         playerRigidbody = player.GetComponent<Rigidbody2D>();
+        oc = player.GetComponent<OverworldController>();
         waypoint = GetEffectivePlayerPosition();
+        barkSound = GetComponent<AudioSource>();
         playerIsWaypoint = true;
     }
 
@@ -98,13 +105,41 @@ public class DogController : MonoBehaviour
         }
     }
 
+    private void InteractWithPlayer()
+    {
+        barkSound.Play();
+
+        oc.canMove = false;
+        oc.canTakeDialogue = false;
+
+        dc.TriggerNextDialogue(false);
+    }
+
+    private IEnumerator TryToInteractWithPlayer()
+    {
+        if (!oc.canTakeDialogue)
+            yield break;
+
+        yield return new WaitForSeconds(.1f);
+        if (!oc.canTakeDialogue)
+            yield break;
+
+        InteractWithPlayer();
+    }
+
+    private void Update()
+    {
+        if (playerCanInteract && Input.GetButtonDown("Use"))
+        {
+            StartCoroutine(TryToInteractWithPlayer());
+        }
+    }
+
     void FixedUpdate()
     {
         // Move toward the waypoint if we're far away from it.
         if (FarFromWaypoint())
         {
-            anim.SetBool("investigating", false);
-
             TryToMoveTowardWaypoint();
 
         } else
@@ -112,15 +147,7 @@ public class DogController : MonoBehaviour
             // If we've reached the waypoint and we are jumping, then stop jumping and start walking.
             if (jumping)
             {
-                anim.SetTrigger("startFollowing");
                 jumping = false;
-            }
-
-            // If we've reached the waypoint and the player isn't the waypoint, then the dog has found something.
-            // Set off the "investigating" (sniff) animation.
-            if (!playerIsWaypoint)
-            {
-                anim.SetBool("investigating", true);
             }
 
             anim.SetInteger("speed", 0);

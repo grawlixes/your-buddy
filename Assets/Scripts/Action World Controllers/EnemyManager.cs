@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public List<EnemyController> enemiesOnScreen;
-    public float timeToSpawnSkeleton = 3f;
-    public float timeToSpawnWizard = 7f;
-    public bool inTutorial = true;
+    public float timeToSpawnSkeleton = 2f;
+    public float timeToSpawnWizard = 5f;
+    public bool inTutorial = false;
     public bool movingTutorialEnemies = false;
 
     private float timeLeftToSpawnSkeleton;
@@ -16,7 +16,7 @@ public class EnemyManager : MonoBehaviour
 
     private const string SKELETON_PREFAB_NAME = "Prefabs/Skeleton";
     private const string WIZARD_PREFAB_NAME = "Prefabs/Wizard";
-    private Vector3 WIZARD_START_POSITION = new Vector3(1100, 250, -1);
+    private Vector3 WIZARD_START_POSITION = new Vector3(700, 250, -1);
     private Vector3 SKELETON_START_POSITION = new Vector3(1100, -517, -1);
     private float WIZARD_TUTORIAL_X = 600f;
     private float SKELETON_TUTORIAL_X = 100f;

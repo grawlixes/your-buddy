@@ -707,7 +707,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8c3cea1e38c8bd149be142e6442730c7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -979,7 +979,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a83bcc217e0b4d845bd3b236ce903d32, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2147,7 +2147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numFramesPerFade: 1
   fadeInAtSceneStart: 1
-  sceneToLoadAfterFadeOut: 0
+  sceneToLoadAfterFadeOut: 3
   fadeIndex: 0
 --- !u!212 &1847250327
 SpriteRenderer:
