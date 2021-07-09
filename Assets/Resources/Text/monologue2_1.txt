@@ -1,2 +1,3 @@
-"I was with you the first time. I was with you the second time."
-"PNAME, this will be the last time. Just hold on."
+"I was with you the first time, PNAME. This will be the last."
+"Just hold on."
+[Left shift to dash. E to slash in front of you. Spacebar to kill all enemies on screen.]

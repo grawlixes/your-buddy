@@ -1,4 +1,3 @@
-using System.IO;
 using UnityEngine;
 using TMPro;
 
@@ -37,11 +36,9 @@ public class TextBoxController : MonoBehaviour
         if (player != null)
             player.canMove = false;
 
-        StreamReader sr = new StreamReader("Assets/Resources/Text/" + textFile);
-        string rawString = sr.ReadToEnd();
-        sr.Close();
-        dialogue = rawString.Split('\n');
-
+        TextAsset txt = (TextAsset)Resources.Load("Text/" + textFile, 
+                                                  typeof(TextAsset));
+        dialogue = txt.text.Split('\n');
         TextBoxFactory(dialogue[0]);
     }
 

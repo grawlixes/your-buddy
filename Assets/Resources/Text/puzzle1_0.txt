@@ -2,3 +2,5 @@ The faucet is leaking.
 ...?
 You found another weird-looking cube on the floor in front of the sink.
 Looks like another puzzle.
+[Remember: your objective is to make all buttons green.]
+[Highlighted buttons on mouseover will be clicked all at once.]

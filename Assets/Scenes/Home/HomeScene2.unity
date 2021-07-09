@@ -721,6 +721,8 @@ MonoBehaviour:
   playerCanInteract: 0
   sleeping: 1
   collider: {fileID: 411036450}
+  barkSound: {fileID: 0}
+  playerIsWaypoint: 0
 --- !u!61 &411036450
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2721,7 +2723,7 @@ MonoBehaviour:
   dialogueFamily: dogHome
   dayDependent: 1
   day: 2
-  numUniquePrompts: 4
+  numUniquePrompts: 5
   puzzlePrefabToEnableAfterDialogue: 
   sfc: {fileID: 0}
   fadeAfterThisPrompt: 0

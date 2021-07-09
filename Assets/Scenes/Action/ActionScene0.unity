@@ -655,8 +655,8 @@ MonoBehaviour:
   enemiesOnScreen:
   - {fileID: 1439913856}
   - {fileID: 1448326562}
-  timeToSpawnSkeleton: 5
-  timeToSpawnWizard: 10
+  timeToSpawnSkeleton: 4
+  timeToSpawnWizard: 7
   inTutorial: 1
   movingTutorialEnemies: 0
 --- !u!1 &649827273
@@ -1472,6 +1472,11 @@ PrefabInstance:
       propertyPath: effectAnim
       value: 
       objectReference: {fileID: 1673970527}
+    - target: {fileID: 7970346963938202208, guid: 22362bba7610ecf4a899702d03453db6,
+        type: 3}
+      propertyPath: timePerThunder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22362bba7610ecf4a899702d03453db6, type: 3}
 --- !u!4 &1439913855 stripped
@@ -1694,6 +1699,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192278337402928767, guid: b0f6fba5dfab5e641ac079a6f4c1781b,
+        type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5366593073134305408, guid: b0f6fba5dfab5e641ac079a6f4c1781b,
         type: 3}

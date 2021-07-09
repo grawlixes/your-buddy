@@ -326,7 +326,10 @@ public class ActionWorldController : MonoBehaviour
 
         enemyManager.KillAllEnemies("blasted");
 
-        yield return new WaitForSeconds(5f);
+        if (day == 0)
+            yield return new WaitForSeconds(10f);
+        else
+            yield return new WaitForSeconds(5f);
         blastCooldown = false;
     }
 

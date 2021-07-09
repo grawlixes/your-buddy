@@ -16,9 +16,6 @@ public class OverworldController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
-        // todo: replace this once done with the intro scene w/ name input.
-        PlayerPrefs.SetString("PNAME", "Bailey");
     }
 
     void FixedUpdate()

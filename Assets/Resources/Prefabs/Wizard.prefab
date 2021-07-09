@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectAnim: {fileID: 2398759195766792944}
-  timePerThunder: 3
+  timePerThunder: 4
 --- !u!114 &5013538227207386722
 MonoBehaviour:
   m_ObjectHideFlags: 0

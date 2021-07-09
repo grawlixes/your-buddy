@@ -20,7 +20,7 @@ public class DialogueController : MonoBehaviour
     public int fadeAfterThisPrompt;
     public bool inProgress = false;
 
-    private int promptIndex = 0;
+    public int promptIndex = 0;
 
     // This lets us programmatically change the family of text to read from.
     // An example where this is useful is if we have a set of lines to read for one interactable object,
@@ -48,7 +48,7 @@ public class DialogueController : MonoBehaviour
         if (dayDependent)
             dayString = day.ToString();
 
-        return dialogueFamily + dayString + '_' + index.ToString() + ".txt";
+        return dialogueFamily + dayString + '_' + index.ToString();
     }
 
     // Triggers the "next" batch of dialogue.

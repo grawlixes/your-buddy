@@ -3,5 +3,6 @@ It's your dinner table.
 You found a weird-looking cube underneath the table. It looks like a puzzle.
 This is the first time you've seen something like this in your place.
 Did your mom accidentally leave this here last time she visited?
-[Click on the buttons to make them all green.]
+[Click on the buttons - your objective is to make them all green.]
 [Highlighted buttons on mouseover will be clicked at once.]
+[Buttons that show up as yellow or light green are highlighted, and will be flipped if you click.]

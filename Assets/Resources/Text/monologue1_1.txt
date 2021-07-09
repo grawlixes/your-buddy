@@ -1,2 +1,4 @@
 "PNAME..."
-"I am not sure how much longer the body can keep this up."
+"I am not sure how much longer your body can keep this up."
+[Remember: press left shift to dash between the back and middle of the stage,]
+[E to slash, and spacebar to kill all enemies on screen with a special power.]

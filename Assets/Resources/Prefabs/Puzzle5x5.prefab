@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 8084545598564554582}
-  active: 0
+  active: 1
 --- !u!1 &287234275076519481
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 8084545598564554582}
-  active: 0
+  active: 1
 --- !u!1 &1827277622451077028
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 8084545598564554582}
-  active: 0
+  active: 1
 --- !u!1 &2054430029232440739
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 8084545598564554582}
-  active: 0
+  active: 1
 --- !u!1 &3114077324181411738
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,7 +990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n: 5
   m: 5
-  shape: plus
+  shape: vLine
   day: 2
   options:
   - TV
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 8084545598564554582}
-  active: 0
+  active: 1
 --- !u!1 &4460094371599865003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,7 +1613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 8084545598564554582}
-  active: 0
+  active: 1
 --- !u!1 &4733487148682659373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,7 +2109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 8084545598564554582}
-  active: 0
+  active: 1
 --- !u!1 &6970784321543669118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,7 +2233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 8084545598564554582}
-  active: 0
+  active: 1
 --- !u!1 &7424829094359121466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2481,7 +2481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 8084545598564554582}
-  active: 1
+  active: 0
 --- !u!1 &7875790209024679871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2977,7 +2977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 8084545598564554582}
-  active: 0
+  active: 1
 --- !u!1 &8971940276107500344
 GameObject:
   m_ObjectHideFlags: 0

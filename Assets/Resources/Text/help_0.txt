@@ -1,4 +1,5 @@
-Thanks for trying out my game!
 Use WASD to move around.
-Also, try pressing Spacebar near objects in the house to interact.
-You can even interact with your buddy! When you aren't near another object, press spacebar to talk to him.
+Try pressing spacebar near objects in the house to interact.
+You can interact with some objects multiple times.
+Also, most objects' interactions change each day, so keep checking them out!
+You can even interact with your dog. Again, press spacebar when he's standing by your feet.

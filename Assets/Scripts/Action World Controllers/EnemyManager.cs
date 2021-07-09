@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public List<EnemyController> enemiesOnScreen;
-    public float timeToSpawnSkeleton = 2f;
+    public float timeToSpawnSkeleton = 4f;
     public float timeToSpawnWizard = 5f;
     public bool inTutorial = false;
     public bool movingTutorialEnemies = false;
@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
     {
         timeLeftToSpawnSkeleton = timeToSpawnSkeleton;
         timeLeftToSpawnWizard = timeToSpawnWizard;
-        wizardOnScreen = true;
+        wizardOnScreen = enemiesOnScreen.Count == 2;
     }
 
     public void GetTutorialEnemiesInPosition()
