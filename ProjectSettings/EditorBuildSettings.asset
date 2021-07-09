@@ -7,7 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: 
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Intro/IntroScene.unity
+    guid: cc0aebeaadc52e44384251c7a1f82e51
   - enabled: 1
     path: Assets/Scenes/Room/RoomScene0.unity
     guid: be8dd8bd17d9c1147bc9c5ce31ecae1c
@@ -38,4 +41,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Action/ActionScene2.unity
     guid: 09c5ad5a8efe62a46991340c3e91fa02
+  - enabled: 1
+    path: Assets/Scenes/Finale/FinaleHomeScene.unity
+    guid: 93a9752bd27160d4f9a26e5d6f5e124d
+  - enabled: 1
+    path: Assets/Scenes/Finale/FinaleRoomScene.unity
+    guid: 09087f9477acab14eb8ea9bde6845033
   m_configObjects: {}

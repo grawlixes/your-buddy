@@ -189,6 +189,17 @@ public class ActionWorldController : MonoBehaviour
         yield break;
     }
 
+    private IEnumerator DieFinal()
+    {
+        effectAnim.SetTrigger("blasted");
+        yield return new WaitForSeconds(.25f);
+        takeDamageSound.Play();
+        sfc.StartFadingOut();
+
+        gameObject.SetActive(false);
+        yield break;
+    }
+
     private void Die()
     {
         dead = true;
@@ -203,7 +214,10 @@ public class ActionWorldController : MonoBehaviour
 
         playerAnim.SetTrigger("dead");
 
-        sfc.StartFadingOut();
+        if (day == 2)
+            StartCoroutine(DieFinal());
+        else
+            sfc.StartFadingOut();
     }
 
     public void TakeDamage()
@@ -278,7 +292,7 @@ public class ActionWorldController : MonoBehaviour
         // next time, dash backwards
         dashDistance = -dashDistance;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.6f);
 
         dashCooldown = false;
     }
@@ -312,7 +326,7 @@ public class ActionWorldController : MonoBehaviour
 
         enemyManager.KillAllEnemies("blasted");
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         blastCooldown = false;
     }
 

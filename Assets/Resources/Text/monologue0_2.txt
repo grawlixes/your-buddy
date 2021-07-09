@@ -1,2 +1,2 @@
-[You can dash between your current position and the middle.]
+[You can dash between your current position and the stage's middle.]
 [Press left shift to dash toward the enemy.]

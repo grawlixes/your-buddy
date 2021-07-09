@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numFramesPerFade: 1
   fadeInAtSceneStart: 1
-  sceneToLoadAfterFadeOut: 1
+  sceneToLoadAfterFadeOut: 2
   fadeIndex: 0
 --- !u!212 &194327993
 SpriteRenderer:
@@ -370,6 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 685473341}
   player: {fileID: 1855865678}
+  isPuzzle: 0
   shouldDeleteOnActivation: 0
 --- !u!61 &300065264
 BoxCollider2D:
@@ -1351,6 +1352,7 @@ MonoBehaviour:
   jumpSound: {fileID: 1954688966}
   dc: {fileID: 1409688506}
   playerCanInteract: 0
+  sleeping: 0
   collider: {fileID: 1522029709}
 --- !u!50 &1522029711
 Rigidbody2D:
@@ -1628,6 +1630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 570181985}
   player: {fileID: 1855865678}
+  isPuzzle: 0
   shouldDeleteOnActivation: 0
 --- !u!61 &1714763119
 BoxCollider2D:
@@ -1701,6 +1704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 101076087}
   player: {fileID: 1855865678}
+  isPuzzle: 0
   shouldDeleteOnActivation: 0
 --- !u!61 &1849563644
 BoxCollider2D:

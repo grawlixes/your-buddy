@@ -2666,7 +2666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numFramesPerFade: 1
   fadeInAtSceneStart: 1
-  sceneToLoadAfterFadeOut: 2
+  sceneToLoadAfterFadeOut: 3
   fadeIndex: 0
 --- !u!1 &1528551235
 GameObject:

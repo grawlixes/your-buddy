@@ -2147,7 +2147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numFramesPerFade: 1
   fadeInAtSceneStart: 1
-  sceneToLoadAfterFadeOut: 7
+  sceneToLoadAfterFadeOut: 8
   fadeIndex: 0
 --- !u!212 &1847250327
 SpriteRenderer:

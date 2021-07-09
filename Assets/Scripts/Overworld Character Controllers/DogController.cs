@@ -22,7 +22,7 @@ public class DogController : MonoBehaviour
     private OverworldController oc;
     private Rigidbody2D playerRigidbody;
     private bool jumping = false;
-    private AudioSource barkSound;
+    public AudioSource barkSound;
 
     private Vector3 waypoint;
     private bool playerIsWaypoint;
@@ -60,7 +60,7 @@ public class DogController : MonoBehaviour
     }
 
     // Is the dog far away from wherever it's trying to go?
-    private bool FarFromWaypoint()
+    public bool FarFromWaypoint()
     {
         return Vector2.Distance(rigidbody.transform.localPosition, waypoint) >= ACCEPTABLE_DISTANCE;
     }

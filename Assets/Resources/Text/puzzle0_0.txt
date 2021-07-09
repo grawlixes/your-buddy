@@ -1,6 +1,7 @@
 It's your dinner table.
 ... What's this?
 You found a weird-looking cube underneath the table. It looks like a puzzle.
-Did your mom leave this here last time she visited?
+This is the first time you've seen something like this in your place.
+Did your mom accidentally leave this here last time she visited?
 [Click on the buttons to make them all green.]
 [Highlighted buttons on mouseover will be clicked at once.]
