@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 
@@ -41,6 +42,15 @@ public class SpriteFadeController : MonoBehaviour
     public void StartFadingOut()
     {
         fadeIndex = 2;
+    }
+
+    public IEnumerator FadeOutImmediately()
+    {
+        Color32 color = sprite.color;
+        color.a = 255;
+        sprite.color = color;
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(sceneToLoadAfterFadeOut);
     }
 
     // Update is called once per frame

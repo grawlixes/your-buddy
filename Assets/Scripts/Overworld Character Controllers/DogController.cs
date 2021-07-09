@@ -25,10 +25,10 @@ public class DogController : MonoBehaviour
     public AudioSource barkSound;
 
     private Vector3 waypoint;
-    private bool playerIsWaypoint;
+    public bool playerIsWaypoint;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         playerRigidbody = player.GetComponent<Rigidbody2D>();
@@ -113,6 +113,11 @@ public class DogController : MonoBehaviour
         oc.canTakeDialogue = false;
 
         dc.TriggerNextDialogue(false);
+    }
+
+    public Vector3 GetWaypoint()
+    {
+        return waypoint;
     }
 
     private IEnumerator TryToInteractWithPlayer()

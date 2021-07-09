@@ -276,6 +276,7 @@ MonoBehaviour:
   sleeping: 0
   collider: {fileID: 411036450}
   barkSound: {fileID: 0}
+  playerIsWaypoint: 0
 --- !u!61 &411036450
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -570,6 +571,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dog: {fileID: 411036449}
+  sfc: {fileID: 0}
+  isRoom: 0
 --- !u!82 &483955202
 AudioSource:
   m_ObjectHideFlags: 0
@@ -681,10 +684,10 @@ MonoBehaviour:
   dialogueFamily: mom
   dayDependent: 0
   day: 0
-  numUniquePrompts: 2
+  numUniquePrompts: 3
   puzzlePrefabToEnableAfterDialogue: 
   sfc: {fileID: 1435287681}
-  fadeAfterThisPrompt: 4
+  fadeAfterThisPrompt: 2
   inProgress: 0
 --- !u!1 &1120081544
 GameObject:
@@ -818,7 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d7eb16fa9458a41a39556db273764d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numFramesPerFade: 1
+  numFramesPerFade: 5
   fadeInAtSceneStart: 1
   sceneToLoadAfterFadeOut: 12
   fadeIndex: 0
