@@ -109,7 +109,7 @@ public class EnemyManager : MonoBehaviour
             if (timeLeftToSpawnSkeleton <= 0)
             {
                 SpawnSkeleton();
-                timeToSpawnSkeleton -= .1f;
+                timeToSpawnSkeleton = Mathf.Max(.1f, timeToSpawnSkeleton - .1f);
                 timeLeftToSpawnSkeleton = timeToSpawnSkeleton;
             }
 
@@ -119,7 +119,7 @@ public class EnemyManager : MonoBehaviour
                 if (timeLeftToSpawnWizard <= 0)
                 {
                     SpawnWizard();
-                    timeToSpawnWizard -= .1f;
+                    timeToSpawnWizard = Mathf.Max(.1f, timeToSpawnWizard - .1f);
                     timeLeftToSpawnWizard = timeToSpawnWizard;
                 }
             }
